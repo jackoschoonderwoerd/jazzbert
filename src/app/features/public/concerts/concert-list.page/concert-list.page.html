@@ -1,0 +1,143 @@
+<section>
+    <!-- <h1>Program</h1> -->
+    @if (loading()) {
+    <p>Loading concerts...</p>
+    } @else if (concerts().length === 0) {
+    <p>No upcoming concerts found.</p>
+    } @else {
+    <mat-accordion class="no-chevron no-header-padding"
+        multi="false">
+        @for(concert of concerts(); track concert.id) {
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="day">
+
+                        {{concert.startAt|date: 'EEE'}}
+                    </div>
+                    <div class="date">
+                        {{concert.startAt|date: 'MMM d'}}
+                    </div>
+                    <div class="hours"
+                        [ngClass]="startsAtSeven(concert.startAt) ? 'starts-at-seven' : 'starts-at-fout-thirty'">
+                        {{concert.startAt|date: 'HH:mm'}} - {{concert.endAt|date:'HH:mm'}}</div>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <!-- @if(concert.venue) {
+                    <div class="hours_venue-name">
+                        <div class="venue-name">
+
+                            {{concert?.venue?.name}}
+                        </div>
+                    </div>
+                    } -->
+                    <div class="jazzfry">JAZZFRY</div>
+                    <div class="featuring">featuring</div>
+                    @for(artist of concert.artists; track $index) {
+                    @if(artist.featured) {
+                    <div class="featured-artists">
+                        <div class="featured-artist">
+                            <!-- <div class="feat">feat.</div> -->
+                            <div class="artist-name">{{artist.name}}</div>
+                        </div>
+
+                    </div>
+                    }
+                    }
+
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="body">
+                <!-- <p>
+                    <strong>
+                        <a [routerLink]="['/concerts', concert.id]">
+                            {{ concert.startAt | date: 'fullDate' }}
+                        </a>
+                    </strong>
+                </p> -->
+
+                <div class="hours">
+                    <div class="">from</div>
+                    <div class="start">{{ concert.startAt | date: 'HH:mm' }}</div>
+                    <div class="">until</div>
+                    <div class="end">{{ concert.endAt | date: 'HH:mm' }}</div>
+                </div>
+
+
+
+
+                <p class="artists">
+                    @for (artist of concert.artists; track artist.id; let last = $last) {
+                    <div class="artist"
+                        (click)="onArtistInfo(artist.id)">
+                        <mat-icon>info</mat-icon>
+                        <a class="artist-name">
+
+                            {{ artist.name }}
+                        </a>
+                        <div class="artist-instruments">
+                            @for(instrument of artist.instruments; track $index) {
+                            <div class="artist-instrument">
+                                {{instrument}}
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+                    }
+                </p>
+                @if (concert.venue) {
+                <div class="venue"
+                    (click)="onIframe(concert.venue.locationIframe)">
+
+                    <!-- <strong>Venue:</strong> -->
+                    <div class="venue-name_venue-address_location">
+                        <div class="location">
+                            <mat-icon>place</mat-icon>
+                        </div>
+                        <div class="venue-name_venue-address">
+                            <div class="venue-name">
+                                {{ concert.venue.name }}
+                            </div>
+                            <div class="venue-address">
+                                {{concert.venue.address}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <div class="home-page">
+                            <a [href]="concert.venue.homepageUrl">
+                                <mat-icon>home</mat-icon>
+                            </a>
+                        </div>
+
+                        <a target="_blank"
+                            class="instagram logo"
+                            [href]="concert.venue.socialLinks.instagram"><img src="logos/Instagram_logo_2022.svg.png"
+                                alt="instagram"></a>
+                        <a target="_blank"
+                            class="facebook logo"
+                            [href]="concert.venue.socialLinks.facebook"><img src="logos/facebook-logo-2428(1).svg"
+                                alt="facebool"></a>
+                    </div>
+                    <!-- <p>{{ concert.description }}</p> -->
+                    <p>{{ stripHtml(concert.description) }}</p>
+                </div>
+                }
+
+            </div>
+            <!-- <pre>
+                {{concert|json}}
+
+            </pre> -->
+
+        </mat-expansion-panel>
+        }
+    </mat-accordion>
+
+    }
+
+
+
+</section>

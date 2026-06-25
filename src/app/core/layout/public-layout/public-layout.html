@@ -1,0 +1,46 @@
+<div class="wrapper">
+    <header>
+        <nav style="display: flex; gap: 1rem; align-items: center;">
+            <div class="left">
+                <button mat-raised-button
+                    routerLink="/about"
+                    routerLinkActive="link-active">
+                    about</button>
+
+                <button mat-raised-button
+                    routerLink="/concerts"
+                    routerLinkActive="link-active">
+                    program
+
+                </button>
+                <button mat-raised-button
+                    routerLink="/contact"
+                    routerLinkActive="link-active">contact</button>
+            </div>
+            <a href="https://www.jazzengel.nl"><img src="jazzengel-icon.png"
+                    alt=""></a>
+        </nav>
+    </header>
+
+    <main>
+        <router-outlet />
+    </main>
+    <footer>
+        <div (click)="toAdmin()"
+            class="title">
+            jazzfry
+        </div>
+        @if(!authStore.isLoggedIn()){
+        <div class="admin"><a routerLink="/admin">
+                <mat-icon>login</mat-icon>
+            </a></div>
+
+        } @else {
+        <div (click)="authService.logout()"
+            class="admin"><a>
+                <mat-icon>logout</mat-icon>
+            </a></div>
+        }
+
+    </footer>
+</div>

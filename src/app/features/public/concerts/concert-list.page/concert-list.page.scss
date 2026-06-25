@@ -1,0 +1,178 @@
+section {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    // max-width: 375px;
+    // margin: auto;
+    // padding: 0.5rem;
+    // background-color: lightgray;
+    // border: 1 / px solid black;
+    mat-accordion {
+        mat-expansion-panel {
+            border: 5px solid var(--sea);
+            background-color: var(--sahara);
+            mat-expansion-panel-header {
+                height: 80px !important;
+                mat-panel-title {
+                    // background-color: lightblue;
+                    min-width: 8rem;
+                    padding-left: 0.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                mat-panel-description {
+                    width: 100%;
+                    // background-color: lightgreen;
+                    // justify-content: start !important;
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 0.5rem;
+                    align-items: start;
+                    justify-content: center;
+                    padding-right: 1rem;
+                    // .hours_venue-name {
+                    //     display: flex;
+                    //     gap: 0.5rem;
+                    //     .hours {
+                    //         font-weight: bold;
+                    //     }
+                    // }
+                    .jazzfry {
+                        font-weight: bold;
+                    }
+                    .featured-artists {
+                        .featured-artist {
+                            display: flex;
+                            gap: 0.5rem;
+                            .artist-name {
+                                text-transform: uppercase;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            .body {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                .hours {
+                    border: 2px solid var(--sea);
+                    border-radius: 7px;
+                    display: flex;
+                    gap: 0.5rem;
+                    justify-content: center;
+                    width: fit-content;
+                    margin: auto;
+                    padding: 0.2rem 0.4rem;
+                    .start,
+                    .end {
+                        font-weight: bold;
+                    }
+                }
+
+                .artists {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.2rem;
+                    .artist {
+                        cursor: pointer;
+                        border: 3px solid var(--sea);
+                        background-color: var(--sahara);
+                        align-items: center;
+                        padding: 0.2rem 0.5rem;
+                        display: flex;
+                        justify-content: space-between;
+                        color: black;
+                        border-radius: 7px;
+                        mat-icon {
+                            color: #c2410c;
+                            font-size: 32px;
+                            width: 32px;
+                            height: 32px;
+                        }
+                        .artist-name {
+                            font-size: 1.2rem;
+                            gap: 0.5rem;
+                            display: flex;
+                            align-items: center;
+                            text-decoration: none;
+                            color: inherit;
+                        }
+                        .artist-instruments {
+                            font-style: italic;
+                            // border: 1px solid red;
+                            text-align: end;
+                        }
+                    }
+                }
+                .venue {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .venue-name_venue-address_location {
+                        cursor: pointer;
+                        padding: 1rem;
+                        gap: 0.5rem;
+                        border: 2px solid var(--sea);
+                        border-radius: 7px;
+                        display: flex;
+                        // justify-content: space-between;
+                        gap: 1rem;
+                        align-items: center;
+                        .venue-name_venue-address {
+                            .venue-name {
+                                font-weight: bold;
+                            }
+                            .venue-address {
+                                text-transform: capitalize;
+                            }
+                        }
+                        .location {
+                            // border: 1px solid red;
+                            // color: var(--sea);
+                            color: #c2410c;
+                            mat-icon {
+                                height: 3rem;
+                                width: 3rem;
+                                font-size: 3rem;
+                            }
+                        }
+                    }
+                    .social-links {
+                        // border: 1px solid black;
+                        display: flex;
+                        gap: 1rem;
+                        justify-content: center;
+                        align-items: center;
+                        .home-page {
+                            a {
+                                mat-icon {
+                                    height: 2.8rem;
+                                    width: 2.8rem;
+                                    font-size: 2.8rem;
+                                    color: var(--sea);
+                                }
+                            }
+                        }
+                        .logo {
+                            img {
+                                max-width: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.starts-at-seven {
+    padding: 0 0.3rem;
+    background-color: red;
+    color: white;
+    // border: 1px solid red;
+}
+.starts-at-fout-thirty {
+    padding: 0 0.3rem;
+}

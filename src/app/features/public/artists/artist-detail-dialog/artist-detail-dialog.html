@@ -1,0 +1,59 @@
+<div class="wrapper">
+
+    <header class="header">
+
+        <div class="name">{{ artist()?.name }}</div>
+        <button mat-icon-button
+            mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </header>
+    <main class="body">
+        <!-- <p>
+            <a routerLink="/concerts">← Back to concerts</a>
+        </p> -->
+
+        @if (loading()) {
+        <p>Loading artist...</p>
+        } @else if (!artist()) {
+        <p>Artist not found.</p>
+        } @else {
+
+        @if (artist()!.imageUrl) {
+
+        <img [src]="artist()!.imageUrl"
+            [alt]="artist()!.name" />
+
+        }
+
+        <!-- <section style="margin-bottom: 1rem;">
+            <h2>Instruments</h2>
+            <p>{{ artist()!.instruments.join(', ') }}</p>
+        </section> -->
+
+        <section>
+            <!-- <h2>Biography</h2> -->
+
+            <!-- <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <button type="button"
+                    (click)="setLanguage('nl')"
+                    [disabled]="language() === 'nl'">
+                    NL
+                </button>
+                <button type="button"
+                    (click)="setLanguage('en')"
+                    [disabled]="language() === 'en'">
+                    EN
+                </button>
+            </div> -->
+
+            <!-- <p class="biography"
+                style="white-space: pre-wrap;">
+                {{ artist()!.bios.nl }}
+            </p> -->
+            <!-- <div [innerHTML]="currentBiography()"></div> -->
+            <div [innerHTML]="artist()?.bios?.nl"></div>
+        </section>
+        }
+    </main>
+</div>

@@ -1,0 +1,38 @@
+@if(loading()){
+<p>loading...</p>
+} @else {
+<div class="groups">
+
+    @for (group of groupedVisits(); track group[0]) {
+    <div class="group">
+
+        <h2 class="date-group">
+            {{ group[0] }}
+
+            [{{group[1].length}}]
+        </h2>
+
+        @for (visit of group[1]; track visit.id) {
+
+        <div class="visit">
+            <button mat-icon-button
+                (click)="onDelete(visit.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+            <div class="time">
+                {{ visit.visitedAt.toDate() | date:'HH:mm:ss' }}
+            </div>
+
+            <div class="path">
+                {{ visit.path }}
+            </div>
+
+
+        </div>
+        }
+    </div>
+    }
+</div>
+
+}

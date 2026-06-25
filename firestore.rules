@@ -1,0 +1,52 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == 'zB0AwDsLcAhjcTjAWRA4PQRXnA23';
+    }
+
+    // Public visitor logging
+    match /jazzbert-visits/{visitId} {
+      allow create: if
+        request.auth == null
+        && request.resource.data.keys().hasOnly([
+          'visitedAt',
+          'userAgent',
+          'path'
+        ])
+        && request.resource.data.visitedAt == request.time
+        && request.resource.data.userAgent is string
+        && request.resource.data.path is string
+        && request.resource.data.userAgent.size() <= 500
+        && request.resource.data.path.size() <= 200;
+
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Everything else
+    match /{document=**} {
+      allow read: if true;
+      allow read, write: if isAdmin();
+    }
+  }
+}
+
+// rules_version = '2';
+
+// service cloud.firestore {
+//   match /databases/{database}/documents {
+
+//     match /{document=**} {
+//       allow read: if true;
+
+//       allow write: if
+//         request.auth != null &&
+//         (
+//           request.auth.uid == 'zB0AwDsLcAhjcTjAWRA4PQRXnA23'
+//         );
+//     }
+//   }
+// }

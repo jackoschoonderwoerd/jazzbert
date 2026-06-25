@@ -1,0 +1,19 @@
+* {
+    background-color: white;
+}
+header {
+    nav {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+        a {
+            text-decoration: none;
+            padding: 0.2rem;
+        }
+    }
+}
+.link-active {
+    text-transform: uppercase;
+    background-color: lightgray;
+
+    border: 1px solid gray;
+}

@@ -1,0 +1,42 @@
+.wrapper {
+    // border: 3px solid var(--sahara);
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--sea-light);
+    margin: 0 auto;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    header {
+        color: var(--sahara);
+        background-color: var(--sea);
+        padding: 1rem;
+        max-width: 100%;
+        min-width: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // border-radius: 30px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        .name {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        button {
+            mat-icon {
+                color: var(--sahara);
+            }
+        }
+    }
+    main {
+        padding: 0.5rem;
+        max-width: 100%;
+        min-width: 0;
+        overflow-y: auto; // 👈 enables scrolling
+        img {
+            width: 100%;
+        }
+    }
+}

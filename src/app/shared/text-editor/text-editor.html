@@ -1,0 +1,40 @@
+<div class="editor-shell"
+    [class.is-disabled]="disabled()">
+    <div class="toolbar">
+        <button type="button"
+            (click)="toggleBold()"
+            [disabled]="disabled()">Bold</button>
+        <button type="button"
+            (click)="toggleItalic()"
+            [disabled]="disabled()">Italic</button>
+        <button type="button"
+            (click)="toggleBulletList()"
+            [disabled]="disabled()">Bullet list</button>
+        <button type="button"
+            (click)="toggleOrderedList()"
+            [disabled]="disabled()">Numbered list</button>
+        <button type="button"
+            (click)="setParagraph()"
+            [disabled]="disabled()">Paragraph</button>
+        <button type="button"
+            (click)="toggleHeading(2)"
+            [disabled]="disabled()">H2</button>
+        <button type="button"
+            (click)="toggleHeading(3)"
+            [disabled]="disabled()">H3</button>
+        <button type="button"
+            (click)="undo()"
+            [disabled]="disabled()">Undo</button>
+        <button type="button"
+            (click)="setAlignCenter()"
+            [disabled]="disabled()">
+            Center
+        </button>
+        <button type="button"
+            (click)="redo()"
+            [disabled]="disabled()">Redo</button>
+    </div>
+
+    <div class="editor-content"
+        #editorHost></div>
+</div>

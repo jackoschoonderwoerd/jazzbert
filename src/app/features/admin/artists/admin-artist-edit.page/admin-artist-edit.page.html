@@ -1,0 +1,111 @@
+<section style="max-width: 900px;">
+    <p>
+        <a routerLink="/admin/artists">← Back to artists</a>
+    </p>
+
+    <h1>{{ pageTitle() }}</h1>
+
+    @if (loading()) {
+    <p>Loading artist...</p>
+    } @else {
+    <form [formGroup]="form"
+        (ngSubmit)="save()"
+        style="display: grid; gap: 1rem;">
+        <div>
+            <label for="name">Name</label><br />
+            <input id="name"
+                type="text"
+                formControlName="name"
+                style="width: 100%;" />
+            @if (form.controls.name.touched && form.controls.name.invalid) {
+            <p style="color: red;">Name is required.</p>
+            }
+        </div>
+
+        <div>
+            <label for="instruments">Instruments</label><br />
+            <input id="instruments"
+                type="text"
+                formControlName="instruments"
+                placeholder="piano, saxophone, vocals"
+                style="width: 100%;" />
+            <small>Enter instruments separated by commas.</small>
+        </div>
+
+        <div>
+            <label for="bioNl">Biography (NL)</label><br />
+            <app-text-editor formControlName="bioNl" />
+            @if (form.controls.bioNl.touched && form.controls.bioNl.invalid) {
+            <p style="color: red;">Dutch biography is required.</p>
+            }
+        </div>
+
+        <div>
+            <label for="bioEn">Biography (EN)</label><br />
+            <app-text-editor formControlName="bioEn" />
+            @if (form.controls.bioEn.touched && form.controls.bioEn.invalid) {
+            <p style="color: red;">English biography is required.</p>
+            }
+        </div>
+
+        <!-- <div>
+            <label for="bioNl">Biography (NL)</label><br />
+            <textarea id="bioNl"
+                rows="8"
+                formControlName="bioNl"
+                style="width: 100%;"></textarea>
+            @if (form.controls.bioNl.touched && form.controls.bioNl.invalid) {
+            <p style="color: red;">Dutch biography is required.</p>
+            }
+        </div>
+
+        <div>
+            <label for="bioEn">Biography (EN)</label><br />
+            <textarea id="bioEn"
+                rows="8"
+                formControlName="bioEn"
+                style="width: 100%;"></textarea>
+            @if (form.controls.bioEn.touched && form.controls.bioEn.invalid) {
+            <p style="color: red;">English biography is required.</p>
+            }
+        </div> -->
+
+        <div>
+            <label for="image">Artist image</label><br />
+            <input id="image"
+                type="file"
+                accept="image/*"
+                (change)="onFileSelected($event)" />
+
+            @if (selectedFileName()) {
+            <p>Selected file: {{ selectedFileName() }}</p>
+            }
+
+            @if (imagePreviewUrl()) {
+            <div style="margin-top: 1rem;">
+                <img [src]="imagePreviewUrl()!"
+                    alt="Artist preview"
+                    style="max-width: 240px; max-height: 240px; display: block; border: 1px solid #ddd;" />
+            </div>
+            }
+        </div>
+
+        @if (error()) {
+        <p style="color: red;">{{ error() }}</p>
+        }
+
+        @if (success()) {
+        <p style="color: green;">{{ success() }}</p>
+        }
+
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit"
+                [disabled]="saving() || form.invalid">
+                {{ saving() ? 'Saving...' : 'Save artist' }}
+            </button>
+
+            <a routerLink="/admin/artists">Cancel</a>
+        </div>
+    </form>
+    }
+</section>

@@ -1,0 +1,67 @@
+ <section>
+     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+         <h1>Concerts</h1>
+         <a routerLink="/admin/concerts/new">New concert</a>
+     </div>
+     <div class="buttons">
+         <button mat-raised-button
+             type="button"
+             (click)="showFutureConcertViewsOnly.update(value => !value)">
+             {{ showFutureConcertViewsOnly() ? 'Show past and future events' : 'Only show future events' }}
+         </button>
+         <!-- <button type="button"
+             mat-raised-button
+             (click)="exportEventsXlsx()">
+             Export XLSX
+         </button> -->
+         <button type="button"
+             mat-raised-button
+             (click)="exportEventsJson()">
+             Export JSON
+         </button>
+     </div>
+
+     @if (loading()) {
+     <p>Loading concerts...</p>
+     } @else if (concerts().length === 0) {
+     <p>No concerts yet.</p>
+     } @else {
+     <div class="concert-views">
+         @for(view of visibleConcertViews(); track $index) {
+         <div class="concert">
+             <div>
+                 <a [routerLink]="['/admin/concerts', view.id]">
+                     <mat-icon>edit</mat-icon>
+                 </a>
+             </div>
+             <div class="start">
+                 <div class="date">
+                     {{view.startAt|date}}
+                 </div>
+                 <div class="time">
+
+                     {{view.startAt|date:'shortTime'}}
+                     {{view.endAt|date:'shortTime'}}
+                 </div>
+                 <!-- {{view.startAt}} -->
+             </div>
+             <div class="venue">
+                 {{view.venue?.name}}
+             </div>
+             <div class="artists">
+                 @for(artist of view.artists; track $index) {
+                 <div class="artist-name">
+                     <!-- @if(artist.featured) { -->
+                     {{artist.name}} -
+                     {{artist.instruments}}
+                     <!-- } -->
+                 </div>
+                 }
+             </div>
+         </div>
+
+
+         }
+     </div>
+     }
+ </section>

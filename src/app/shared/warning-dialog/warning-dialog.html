@@ -1,0 +1,15 @@
+<div class="container">
+
+    <p>{{ data.message }}</p>
+
+    <div class="buttons">
+        @if(data.cancel) {
+
+        <button mat-button
+            (click)="cancel()">Cancel</button>
+        }
+        <button mat-raised-button
+            color="warn"
+            (click)="ok()">OK</button>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+<section>
+    <h1>Admin dashboard</h1>
+
+    @if (loading()) {
+    <p>Loading dashboard...</p>
+    } @else {
+    <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+          ">
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Artists</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ artistCount() }}</p>
+            <a routerLink="/admin/artists">Manage artists</a>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Venues</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ venueCount() }}</p>
+            <a routerLink="/admin/venues">Manage venues</a>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Concerts</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ concertCount() }}</p>
+            <a routerLink="/admin/concerts">Manage concerts</a>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Published</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ publishedConcertCount() }}</p>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Drafts</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ draftConcertCount() }}</p>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Upcoming</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ upcomingConcertCount() }}</p>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Past</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ pastConcertCount() }}</p>
+        </article>
+
+        <article style="border: 1px solid #ddd; padding: 1rem;">
+            <h2 style="margin-top: 0;">Visits</h2>
+            <p style="font-size: 2rem; margin: 0.5rem 0;">{{ visitsCount() }}</p>
+            <a routerLink="/admin/jazzbert-visits">Manage visits</a>
+        </article>
+    </div>
+
+    <section style="margin-bottom: 2rem;">
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a routerLink="/admin/concerts/new">New concert</a>
+            <a routerLink="/admin/artists/new">New artist</a>
+            <a routerLink="/admin/venues/new">New venue</a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Upcoming concerts</h2>
+
+
+
+        @if (upcomingConcerts().length === 0) {
+        <p>No upcoming concerts.</p>
+        } @else {
+        <ul class="upcoming-concerts"
+            #concertList
+            style="display: grid; gap: 0.75rem; padding: 0; list-style: none;">
+            @for (concert of upcomingConcerts(); track concert.id) {
+            <!-- <pre>{{concert|json}}</pre> -->
+            <li style="border: 1px solid #ddd; padding: 1rem;">
+                <div style="
+                      display: flex;
+                      justify-content: space-between;
+                      gap: 1rem;
+                      align-items: start;
+                    ">
+                    <div>
+                        <strong>{{ concert.startAt.toDate() | date: 'fullDate' }}</strong><br />
+                        <span>
+                            {{ concert.startAt.toDate() | date: 'HH:mm' }} –
+                            {{ concert.endAt.toDate() | date: 'HH:mm' }}
+                        </span><br />
+                        <span>Status: {{ concert.status }}</span>
+                    </div>
+                    <ul class="artist-names">
+                        @for(entry of concert.artistEntries;track $index){
+
+                        {{getArtistNameById(entry.artistId)}}
+                        }
+                    </ul>
+                    <div>
+                        <a [routerLink]="['/admin/concerts', concert.id]">Edit</a>
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+        }
+    </section>
+
+    @if (error()) {
+    <p style="color: red; margin-top: 1rem;">{{ error() }}</p>
+    }
+    }
+</section>

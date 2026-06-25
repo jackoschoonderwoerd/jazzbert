@@ -1,0 +1,146 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.wrapper {
+    border: 3px solid var(--sahara);
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--sea-light);
+    margin: 0 auto;
+
+    height: 100dvh; // better on iPhone
+    max-height: 100dvh;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+header {
+    background-color: var(--sea-light);
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    nav {
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            display: flex;
+            gap: 1rem;
+            button {
+                background-color: var(--sea);
+                // border: 1px solid black;
+                padding: 0.3rem 0.5rem;
+                color: var(--sahara);
+                text-transform: uppercase;
+            }
+        }
+        a {
+            img {
+                height: 3rem;
+            }
+        }
+    }
+}
+
+main {
+    min-height: 0; // important for grid scrolling
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.2rem;
+    background-color: var(--sea);
+}
+
+footer {
+    height: 2rem;
+    color: var(--sahara);
+    background-color: var(--sea-light);
+    display: flex;
+    padding: 0.2rem 0.5rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-top: 1px solid var(--sahara);
+    .title {
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .admin {
+        position: absolute;
+        right: 1rem;
+        top: 3px;
+        mat-icon {
+            color: var(--sahara);
+        }
+    }
+}
+
+.link-active {
+    background-color: var(--sahara) !important;
+    color: black !important;
+}
+
+// .wrapper {
+//     border: 3px solid var(--sahara);
+//     width: 100%;
+//     max-width: 450px;
+//     background-color: var(--sea-light);
+//     margin: 0 auto;
+//     height: 100vh;
+
+//     display: grid;
+//     grid-template-rows: auto 1fr auto;
+//     header {
+//         background-color: var(--sea);
+//         padding: 1rem;
+//         border-bottom: 1px solid #ddd;
+//         max-width: 100%;
+//         min-width: 0;
+
+//         nav {
+//             button {
+//                 text-decoration: none;
+//                 color: var(-black);
+//             }
+//         }
+//     }
+//     main {
+//         padding: 0.2rem;
+//         max-width: 100%;
+//         min-width: 0;
+//         overflow-y: auto; // 👈 enables scrolling
+//     }
+//     footer {
+//         height: 2rem;
+//         color: var(--sahara);
+//         background-color: var(--sea);
+//         max-width: 100%;
+//         min-width: 0;
+//         display: flex;
+//         padding: 0.2rem 0.5rem;
+
+//         justify-content: center;
+//         align-items: center;
+//         position: relative;
+//         .title {
+//             text-transform: uppercase;
+//         }
+//         .admin {
+//             position: absolute;
+//             right: 1rem;
+//             top: 3px;
+//             mat-icon {
+//                 color: var(--sahara);
+//             }
+//         }
+//     }
+// }
+// .link-active {
+//     background-color: var(--sahara) !important;
+//     color: black !important;
+//     text-transform: uppercase;
+//     padding: 0.3rem 0.5rem;
+// }

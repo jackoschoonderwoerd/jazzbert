@@ -1,0 +1,102 @@
+<section style="max-width: 900px;">
+    <p>
+        <a routerLink="/admin/venues">← Back to venues</a>
+    </p>
+
+    <h1>{{ pageTitle() }}</h1>
+
+    @if (loading()) {
+    <p>Loading venue...</p>
+    } @else {
+    <form [formGroup]="form"
+        (ngSubmit)="save()"
+        style="display: grid; gap: 1rem;">
+        <div>
+            <label for="name">Name</label><br />
+            <input id="name"
+                type="text"
+                formControlName="name"
+                style="width: 100%;" />
+            @if (form.controls.name.touched && form.controls.name.invalid) {
+            <p style="color: red;">Name is required.</p>
+            }
+        </div>
+
+        <div>
+            <label for="address">Address</label><br />
+            <textarea id="address"
+                rows="4"
+                formControlName="address"
+                style="width: 100%;"></textarea>
+            @if (form.controls.address.touched && form.controls.address.invalid) {
+            <p style="color: red;">Address is required.</p>
+            }
+        </div>
+
+        <div>
+            <label for="homepageUrl">Homepage URL</label><br />
+            <input id="homepageUrl"
+                type="text"
+                formControlName="homepageUrl"
+                placeholder="https://..."
+                style="width: 100%;" />
+            @if (form.controls.homepageUrl.touched && form.controls.homepageUrl.errors?.['url']) {
+            <p style="color: red;">Enter a valid URL.</p>
+            }
+        </div>
+
+        <div>
+            <label for="locationIframe">Location iframe</label><br />
+            <input id="locationIframe"
+                type="text"
+                formControlName="locationIframe"
+                placeholder="<iframe ..."
+                style="width: 100%;" />
+            @if (form.controls.locationIframe.touched && form.controls.locationIframe.errors?.['url']) {
+            <p style="color: red;">Enter a valid URL.</p>
+            }
+        </div>
+
+        <div>
+            <label for="instagram">Instagram URL</label><br />
+            <input id="instagram"
+                type="text"
+                formControlName="instagram"
+                placeholder="https://instagram.com/..."
+                style="width: 100%;" />
+            @if (form.controls.instagram.touched && form.controls.instagram.errors?.['url']) {
+            <p style="color: red;">Enter a valid Instagram URL.</p>
+            }
+        </div>
+
+        <div>
+            <label for="facebook">Facebook URL</label><br />
+            <input id="facebook"
+                type="text"
+                formControlName="facebook"
+                placeholder="https://facebook.com/..."
+                style="width: 100%;" />
+            @if (form.controls.facebook.touched && form.controls.facebook.errors?.['url']) {
+            <p style="color: red;">Enter a valid Facebook URL.</p>
+            }
+        </div>
+
+        @if (error()) {
+        <p style="color: red;">{{ error() }}</p>
+        }
+
+        @if (success()) {
+        <p style="color: green;">{{ success() }}</p>
+        }
+
+        <div style="display: flex; gap: 1rem;">
+            <button type="submit"
+                [disabled]="saving() || form.invalid">
+                {{ saving() ? 'Saving...' : 'Save venue' }}
+            </button>
+
+            <a routerLink="/admin/venues">Cancel</a>
+        </div>
+    </form>
+    }
+</section>

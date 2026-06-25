@@ -1,0 +1,37 @@
+<main>
+
+    <form [formGroup]="form"
+        (ngSubmit)="submit()">
+        <h1>Admin login</h1>
+
+        <mat-form-field>
+            <mat-label>email</mat-label>
+            <input type="email"
+                formControlName="email"
+                matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>password</mat-label>
+            <input type="password"
+                matInput
+                formControlName="password">
+        </mat-form-field>
+        <div class="buttons">
+            <button mat-raised-button
+                type="submit"
+                [disabled]="form.invalid || loading()">
+                {{ loading() ? 'Signing in...' : 'Sign in' }}
+            </button>
+            <button mat-raised-button
+                routerLink="/concerts">cancel</button>
+        </div>
+    </form>
+
+    @if (error()) {
+    <p style="color: red; margin-top: 1rem;">{{ error() }}</p>
+    }
+    <p>User: {{ authStore.user()?.email ?? 'none' }}</p>
+    <p>Admin: {{ authStore.isAdmin() }}</p>
+    <p>Loading: {{ authStore.loading() }}</p>
+</main>

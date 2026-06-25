@@ -1,0 +1,19 @@
+.container {
+    padding: 1rem;
+    background-color: var(--sahara);
+    p {
+        letter-spacing: 1.2px;
+        color: var(--sea);
+        font-size: 1.2rem;
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        button {
+            margin: auto;
+            background-color: var(--sea);
+            color: var(--sahara);
+        }
+    }
+}

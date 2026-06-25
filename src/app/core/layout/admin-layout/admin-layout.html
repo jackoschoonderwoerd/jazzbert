@@ -1,0 +1,25 @@
+<header style="padding: 1rem; border-bottom: 1px solid #ddd;">
+    <nav style="align-items: center;">
+        <a routerLink="/concerts"
+            routerLinkActive="link-active">App</a>
+        <a routerLink="/admin"
+            routerLinkActive="">Dashboard</a>
+        <a routerLink="/admin/artists"
+            routerLinkActive="link-active">Artists</a>
+        <a routerLink="/admin/venues"
+            routerLinkActive="link-active">Venues</a>
+        <a routerLink="/admin/concerts"
+            routerLinkActive="link-active">Concerts</a>
+        <a routerLink="/admin/jazzbert-visits"
+            routerLinkActive="link-active">Visits</a>
+        <button type="button"
+            mat-icon-button
+            (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </nav>
+</header>
+
+<main style="padding: 1rem;">
+    <router-outlet />
+</main>

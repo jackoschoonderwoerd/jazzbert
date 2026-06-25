@@ -1,11 +1,28 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+    ApplicationConfig,
+    provideAppInitializer,
+    provideBrowserGlobalErrorListeners,
+    provideZonelessChangeDetection,
+    inject, isDevMode,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideServiceWorker } from '@angular/service-worker';
+import { appRoutes } from './app.routes';
+import { environment } from '../environments/environment';
+import { AuthService } from './core/auth/auth.service';
 
-import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
-  ]
+    providers: [
+        provideBrowserGlobalErrorListeners(),
+        provideZonelessChangeDetection(),
+        provideRouter(appRoutes),
+        provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerImmediately',
+        }),
+        // provideAppInitializer(() => {
+        //     inject(AuthService).init();
+        // }),
+    ],
 };
