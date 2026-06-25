@@ -48,7 +48,7 @@ export class About {
     onNotification() {
         const dialogRef = this.matDialog.open(WarningDialog, {
             data: {
-                message: 'From july 25th, concerts will start at 19:00',
+                message: '<p>From july 25th, Saturday concerts will start at 19:00.</p><p> On Fridays concerts will start at 16:30.</p>',
                 cancel: false
             }
         })

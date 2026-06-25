@@ -1,6 +1,6 @@
 <div class="container">
 
-    <p>{{ data.message }}</p>
+    <p [innerHTML]="data.message"></p>
 
     <div class="buttons">
         @if(data.cancel) {
