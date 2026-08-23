@@ -86,9 +86,9 @@ export class AdminConcertEditPage {
             }),
             description: new FormControl('', {
                 nonNullable: true,
-                validators: [Validators.required],
+                validators: [],
             }),
-            status: new FormControl<'draft' | 'published'>('draft', {
+            status: new FormControl<'draft' | 'published'>('published', {
                 nonNullable: true,
                 validators: [Validators.required],
             }),

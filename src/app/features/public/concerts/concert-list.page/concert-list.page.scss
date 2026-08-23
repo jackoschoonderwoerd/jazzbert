@@ -15,13 +15,15 @@ section {
                 height: 80px !important;
                 mat-panel-title {
                     // background-color: lightblue;
-                    min-width: 8rem;
-                    padding-left: 0.5rem;
+                    min-width: 7.5rem;
+                    // padding-left: 0.5rem;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+                    // border: 1px solid red;
                 }
                 mat-panel-description {
+                    // border: 1px solid red;
                     width: 100%;
                     // background-color: lightgreen;
                     // justify-content: start !important;
@@ -30,7 +32,7 @@ section {
                     // gap: 0.5rem;
                     align-items: start;
                     justify-content: center;
-                    padding-right: 1rem;
+                    padding-right: 0.5rem;
                     // .hours_venue-name {
                     //     display: flex;
                     //     gap: 0.5rem;
@@ -175,4 +177,13 @@ section {
 }
 .starts-at-fout-thirty {
     padding: 0 0.3rem;
+}
+
+.mat-expansion-panel-header-title {
+    flex: 0 0 auto;
+    margin-right: 8px;
+}
+
+.mat-expansion-panel-header-description {
+    flex: 0 0 auto;
 }
