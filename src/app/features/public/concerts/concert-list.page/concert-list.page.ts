@@ -77,4 +77,17 @@ export class ConcertListPage {
         // console.log(today < twoMonthsFromNow)
         return date.getHours() === 19 && today < twoMonthsFromNow
     }
+
+    isAugust29(concertDate: Date) {
+        const today = new Date()
+        return concertDate.getFullYear() === 2026 &&
+            concertDate.getMonth() === 7 &&
+            concertDate.getDate() === 29
+    }
+    isSeptember19(concertDate: Date) {
+        return concertDate.getFullYear() === 2026 &&
+            concertDate.getMonth() === 8 &&
+            concertDate.getDate() === 19
+    }
+
 }

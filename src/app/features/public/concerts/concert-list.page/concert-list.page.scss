@@ -175,7 +175,7 @@ section {
     color: white;
     // border: 1px solid red;
 }
-.starts-at-fout-thirty {
+.starts-at-four-thirty {
     padding: 0 0.3rem;
 }
 
@@ -186,4 +186,24 @@ section {
 
 .mat-expansion-panel-header-description {
     flex: 0 0 auto;
+}
+// .special-date {
+//     background-color: green;
+// }
+.special-date {
+    animation: blink-background 1500ms infinite;
+    padding: 0 0.3rem;
+}
+
+@keyframes blink-background {
+    0%,
+    100% {
+        background-color: transparent;
+        color: black;
+    }
+
+    50% {
+        background-color: red;
+        color: white;
+    }
 }

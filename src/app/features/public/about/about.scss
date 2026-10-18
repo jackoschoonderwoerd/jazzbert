@@ -9,28 +9,47 @@
     letter-spacing: 0.2px;
     line-height: normal;
     height: 100%;
-    .header {
+    .about-header {
         padding-bottom: 1rem;
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        cursor: pointer;
-        .title {
+        .jazzfry {
             text-transform: uppercase;
-            font-size: 1.5rem;
+            text-align: center;
             font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .at {
+            text-align: center;
+        }
+        .parisius {
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 3px;
             display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            button {
-                background-color: var(--sahara);
-                color: var(--sea);
+            justify-content: center;
+            a {
+                mat-icon {
+                    color: var(--sahara);
+                }
+            }
+        }
+        .address {
+            .street {
+                text-align: center;
+            }
+            .zip-code_city {
+                display: flex;
+                justify-content: center;
+                text-align: center;
             }
         }
         .sub-title {
             padding: 1rem;
-            border-bottom: 3px solid var(--sea-light);
+            // border-bottom: 3px solid var(--sea-light);
             border-top: 3px solid var(--sea-light);
             display: flex;
             flex-direction: column;
@@ -48,6 +67,9 @@
                     }
                 }
             }
+        }
+        .component-container {
+            // border: 10px solid red;
         }
     }
     ul {

@@ -9,6 +9,8 @@ import { VisitsRepository } from './data-access/visits.repository';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from './services/snackbar';
 import { SwUpdate } from '@angular/service-worker';
+import { MatDialog } from '@angular/material/dialog';
+import { InstallAppDialog } from './features/public/install-app-dialog/install-app-dialog';
 
 @Component({
     selector: 'app-root',
@@ -27,12 +29,15 @@ export class App implements OnInit {
 
     readonly loading = this.authStore.loading;
 
+
+
     private readonly pingService = inject(PingService);
     readonly result = signal('Not called yet');
     private appUpdate = inject(UpdateService);
     private sb = inject(SnackbarService);
     private visitRegistered = false;
-    private swUpdate = inject(SwUpdate)
+    private swUpdate = inject(SwUpdate);
+    private matDialog = inject(MatDialog)
 
 
 
@@ -73,7 +78,11 @@ export class App implements OnInit {
     }
 
     ngOnInit(): void {
-        this.appUpdate.init()
+        this.appUpdate.init();
+        // this.matDialog.open(InstallAppDialog);
+
+
+
     }
 
     async testPing() {

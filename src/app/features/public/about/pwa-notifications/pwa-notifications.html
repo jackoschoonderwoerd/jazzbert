@@ -1,0 +1,55 @@
+<div class="wrapper">
+    @if(pushService.isLoading()) {
+    <div class="spinner-container">
+        <mat-spinner [diameter]="20"
+            style="--mdc-circular-progress-active-indicator-color: white;"></mat-spinner>
+    </div>
+    } @else {
+
+    @if (mediaDeviceService.isIos && !mediaDeviceService.isAppMode) {
+
+    <button mat-raised-button
+        (click)="showInstallInstructions()">
+        <mat-icon>install_mobile</mat-icon>
+        Install JazzFry
+    </button>
+
+    }
+
+    @if ((!mediaDeviceService.isIos || mediaDeviceService.isAppMode) && pushService.isSupported) {
+
+    @if (pushService.isSubscribed()) {
+
+    <button mat-raised-button
+        [disabled]="pushService.isLoading()"
+        (click)="pushService.unsubscribe()">
+        <mat-icon>notifications_off</mat-icon>
+        Disable notifications
+    </button>
+
+    }
+
+    @if (!pushService.isSubscribed()) {
+
+    <button mat-raised-button
+        [disabled]="pushService.isLoading()"
+        (click)="pushService.subscribe()">
+        <mat-icon>notifications_active</mat-icon>
+        Enable notifications
+    </button>
+
+    }
+
+    }
+
+    @if ((!mediaDeviceService.isIos || mediaDeviceService.isAppMode)
+    && !pushService.isSupported) {
+
+    <p class="not-available">
+        Push notifications are not available
+        in this environment.
+    </p>
+
+    }
+    }
+</div>

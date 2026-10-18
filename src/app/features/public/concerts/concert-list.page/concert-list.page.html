@@ -1,5 +1,6 @@
 <section>
     <!-- <h1>Program</h1> -->
+
     @if (loading()) {
     <p>Loading concerts...</p>
     } @else if (concerts().length === 0) {
@@ -8,6 +9,7 @@
     <mat-accordion class="no-chevron no-header-padding"
         multi="false">
         @for(concert of concerts(); track concert.id) {
+
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -18,9 +20,20 @@
                     <div class="date">
                         {{concert.startAt|date: 'MMM d'}}
                     </div>
+                    @if(!isSeptember19(concert.startAt)) {
                     <div class="hours"
-                        [ngClass]="startsAtSeven(concert.startAt) ? 'starts-at-seven' : 'starts-at-fout-thirty'">
+                        [ngClass]="startsAtSeven(concert.startAt) ? 'starts-at-seven' : 'starts-at-four-thirty'">
                         {{concert.startAt|date: 'HH:mm'}} - {{concert.endAt|date:'HH:mm'}}</div>
+                    } @else {
+                    <div class="hours">
+                        <!-- {{concert.startAt|date: 'HH:mm'}} - {{concert.endAt|date:'HH:mm'}} -->
+                        <div class="special-date">
+                            17:00 - 20:00
+                        </div>
+                    </div>
+                    }
+
+
                 </mat-panel-title>
                 <mat-panel-description>
                     <!-- @if(concert.venue) {

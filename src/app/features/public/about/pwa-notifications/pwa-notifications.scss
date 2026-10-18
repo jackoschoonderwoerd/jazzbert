@@ -1,0 +1,40 @@
+@use "@angular/material" as mat;
+
+.spinner-container {
+    @include mat.progress-spinner-overrides(
+        (
+            active-indicator-color: var(--sahara)
+        )
+    );
+}
+
+.wrapper {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    // background-color: red;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    // .spinner-container {
+    //     // height: 2rem;
+    //     // width: 2rem;
+    //     padding: 0.2rem;
+    //     border-radius: 50%;
+    //     background-color: var(--sahara);
+    //     mat-spinner {
+    //         --mdc-circular-progress-active-indicator-color: white;
+    //     }
+    // }
+    // .spinner-container {
+    //     mat-spinner {
+    //         --mdc-circular-progress-active-indicator-color: white;
+    //     }
+    // }
+    .not-available {
+        background-color: white;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+}

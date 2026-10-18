@@ -1,0 +1,43 @@
+<div class="wrapper">
+
+    <h2>Send push notification</h2>
+
+    <label for="notification-title">Title</label>
+
+    <input id="notification-title"
+        [(ngModel)]="title"
+        maxlength="100">
+
+    <label for="notification-message">Message</label>
+
+    <textarea id="notification-message"
+        [(ngModel)]="message"
+        maxlength="500"
+        rows="5">
+    </textarea>
+
+    <button type="button"
+        [disabled]="
+            sending() ||
+            !title.trim() ||
+            !message.trim()
+        "
+        (click)="send()">
+
+        {{ sending() ? 'Sending...' : 'Send notification' }}
+
+    </button>
+
+    @if (result()) {
+    <p>{{ result() }}</p>
+    }
+
+
+    <button mat-raised-button
+        (click)="pushService.sendTestNotification()">
+        <mat-icon>notifications_active</mat-icon>
+        Send test notification
+    </button>
+
+
+</div>

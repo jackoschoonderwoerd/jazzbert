@@ -1,9 +1,18 @@
 <div class="wrapper">
-    <div class="header">
-        <div class="title"
-            (click)="onBert()">jazzfry <button mat-icon-button>
-                <mat-icon>place</mat-icon>
-            </button> café parisius
+    <div class="about-header">
+        <div class="jazzfry">jazzfry </div>
+        <div class="at">at</div>
+        <div class="parisius">café Parisius&nbsp;&nbsp;<a href="https://cafe-bert.web.app/calendar"
+                target="_blank">
+                <mat-icon>link</mat-icon>
+            </a>
+
+        </div>
+        <div class="address">
+            <div class="street">Borneostraat 112</div>
+            <div class="zip-code_city">
+                1094 CR, Amsterdam <mat-icon (click)="onBert()">place</mat-icon>
+            </div>
         </div>
         <div class="sub-title">
             <div class="fridays">
@@ -17,8 +26,18 @@
                 </div>
             </div>
 
-
         </div>
+        @if(authStore.isLoggedIn()){
+        <div class="component-container">
+
+            <app-pwa-notifications></app-pwa-notifications>
+        </div>
+        }
+
+        @if(authStore.isLoggedIn()){
+
+        <button (click)="toggleLoading()">toggle loading</button>
+        }
 
 
 
@@ -48,4 +67,7 @@
         mat-raised-button
         (click)="onProgram()">Program</button>
     <!-- </div> -->
+    @if(authStore.isLoggedIn()) {
+
+    }
 </div>

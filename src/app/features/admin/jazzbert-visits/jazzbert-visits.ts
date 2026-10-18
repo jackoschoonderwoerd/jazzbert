@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-jazzbert-visits',
-    imports: [DatePipe, MatIconModule, MatButtonModule, JsonPipe],
+    imports: [DatePipe, MatIconModule, MatButtonModule],
     templateUrl: './jazzbert-visits.html',
     styleUrl: './jazzbert-visits.scss',
 })

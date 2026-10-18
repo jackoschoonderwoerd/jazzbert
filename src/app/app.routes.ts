@@ -15,6 +15,7 @@ import { AdminConcertEditPage } from './features/admin/concerts/admin-concert-ed
 import { AdminDashboardPage } from './features/admin/dashboard/admin-dashboard.page';
 import { About } from './features/public/about/about';
 import { JazzbertVisits } from './features/admin/jazzbert-visits/jazzbert-visits';
+import { SendNotification } from './features/admin/send-notification/send-notification';
 
 
 export const appRoutes: Routes = [
@@ -32,6 +33,7 @@ export const appRoutes: Routes = [
                 loadComponent: () => import('./features/public/concerts/concert-list.page/concert-list.page')
                     .then(c => c.ConcertListPage)
             },
+
             {
                 path: 'concerts/:id',
                 loadComponent: () => import('./features/public/concerts/concert-detail.page')
@@ -68,7 +70,8 @@ export const appRoutes: Routes = [
             { path: 'concerts/new', component: AdminConcertEditPage },
             { path: 'concerts/:id', component: AdminConcertEditPage },
 
-            { path: 'jazzbert-visits', component: JazzbertVisits }
+            { path: 'jazzbert-visits', component: JazzbertVisits },
+            { path: 'send-notification', component: SendNotification }
         ],
     },
     { path: '**', redirectTo: 'about' },

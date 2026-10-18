@@ -1,4 +1,4 @@
-@if(mapUrl) {
+<!-- @if(mapUrl) {
 <iframe [src]="mapUrl"
     width="100%"
     height="100%"
@@ -10,4 +10,17 @@
     mat-dialog-close
     mat-icon-button>
     <mat-icon>close</mat-icon>
-</button>
+</button> -->
+<div class="wrapper">
+    @if(mapUrl) {
+    <iframe [src]="mapUrl"
+        loading="lazy">
+    </iframe>
+    }
+
+    <button class="close"
+        mat-icon-button
+        mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
